@@ -33,6 +33,9 @@ apt-get install nginx php5.6-fpm php5.6-cgi php5.6-cli php5.6-common
 
 ```
 
+Installing apache,php, msql https://randomnerdtutorials.com/raspberry-pi-apache-mysql-php-lamp-server/
+
+
 ### :hammer_and_wrench: Mariabd commands
 - Creating new database.
 ```
