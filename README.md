@@ -27,13 +27,8 @@ sudo mysql -u root -p
 ```
 sudo apt install php-mysql
 ```
-9. Install necessary packages for PHP
-```
-apt-get install nginx php5.6-fpm php5.6-cgi php5.6-cli php5.6-common 
-
-```
-
-Installing apache,php, msql https://randomnerdtutorials.com/raspberry-pi-apache-mysql-php-lamp-server/
+9. Installing apache,php, msql https://randomnerdtutorials.com/raspberry-pi-apache-mysql-php-lamp-server/
+10. Modify nginx setting https://pimylifeup.com/raspberry-pi-nginx/
 
 
 ### :hammer_and_wrench: Mariabd commands
