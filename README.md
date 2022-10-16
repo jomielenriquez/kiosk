@@ -27,10 +27,6 @@ sudo mysql -u root -p
 ```
 sudo apt install php-mysql
 ```
-8. Install PHP https://pimylifeup.com/raspberry-pi-latest-php/
-```
-sudo mysql -u root -p
-```
 9. Install necessary packages for PHP
 ```
 apt-get install nginx php5.6-fpm php5.6-cgi php5.6-cli php5.6-common 
