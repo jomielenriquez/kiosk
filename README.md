@@ -60,13 +60,18 @@ SELECT User FROM mysql.user; -- show all the user in the database.
 ```
 
 
-##Other note
-#Changing acces to www/html folder
+###Other note
+###Changing acces to www/html folder
 ```
 pi@raspberrypi:~ $ ls -lh /var/www/
 pi@raspberrypi:~ $ sudo chown -R pi:www-data /var/www/html/
 pi@raspberrypi:~ $ sudo chmod -R 770 /var/www/html/
 pi@raspberrypi:~ $ ls -lh /var/www/
+```
+
+###Modifying nginx default settings - https://pimylifeup.com/raspberry-pi-nginx/
+```
+sudo nano /etc/nginx/sites-enabled/default
 ```
 
 
