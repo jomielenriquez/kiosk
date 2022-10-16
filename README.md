@@ -60,6 +60,14 @@ SELECT User FROM mysql.user; -- show all the user in the database.
 ```
 
 
+##Other note
+#Changing acces to www/html folder
+```
+pi@raspberrypi:~ $ ls -lh /var/www/
+pi@raspberrypi:~ $ sudo chown -R pi:www-data /var/www/html/
+pi@raspberrypi:~ $ sudo chmod -R 770 /var/www/html/
+pi@raspberrypi:~ $ ls -lh /var/www/
+```
 
 
 
