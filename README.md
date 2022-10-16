@@ -74,6 +74,8 @@ pi@raspberrypi:~ $ ls -lh /var/www/
 sudo nano /etc/nginx/sites-enabled/default
 ```
 
+Authentication token: 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
+
 
 
 
