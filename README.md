@@ -86,7 +86,7 @@ Password : admin
 
 Authentication Token
 ```
-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
+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
 ```
 
 Inserting to tblcontent
