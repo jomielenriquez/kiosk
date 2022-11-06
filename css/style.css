@@ -71,6 +71,7 @@ footer{
     font-size: x-large;
     white-space: nowrap;
     overflow: hidden;
+    text-align: center;
     text-overflow: ellipsis;
 }
 

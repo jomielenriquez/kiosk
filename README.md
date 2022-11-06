@@ -89,6 +89,30 @@ Authentication Token
 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
 ```
 
+Inserting to tblcontent
+```
+INSERT INTO `tblcontent`(`filetype`, `filelocation`, `filename`, `textheader`, `textcontent`, `bc`, `textcolor`, `order`) 
+VALUES (
+    'IMG',
+    ' ',
+    'https://images.examples.com/wp-content/uploads/2018/10/Vintage-Concert-Poster-Template.jpg',
+    ' ',
+    ' ',
+    ' ',
+    ' ',
+    2
+	),(
+    'IMG',
+    ' ',
+    'https://images.examples.com/wp-content/uploads/2018/10/Vintage-Concert-Poster-Template.jpg',
+    ' ',
+    ' ',
+    ' ',
+    ' ',
+    3
+	)
+```
+
 
 
 
