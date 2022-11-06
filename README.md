@@ -60,8 +60,8 @@ SELECT User FROM mysql.user; -- show all the user in the database.
 ```
 
 
-###Other note
-###Changing acces to www/html folder
+### Other note
+### Changing acces to www/html folder
 ```
 pi@raspberrypi:~ $ ls -lh /var/www/
 pi@raspberrypi:~ $ sudo chown -R pi:www-data /var/www/html/
@@ -69,12 +69,35 @@ pi@raspberrypi:~ $ sudo chmod -R 770 /var/www/html/
 pi@raspberrypi:~ $ ls -lh /var/www/
 ```
 
-###Modifying nginx default settings - https://pimylifeup.com/raspberry-pi-nginx/
+### Modifying nginx default settings - https://pimylifeup.com/raspberry-pi-nginx/
 ```
 sudo nano /etc/nginx/sites-enabled/default
 ```
 
 Authentication token: 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
+
+
+### PHP My admin
+> LINK: http://localhost/phpmyadmin/
+```
+Username : admin 
+Password : admin
+```
+
+```
+CREATE TABLE `KIOSKDB`.`tblcontent` ( 
+  `cid` INT NOT NULL AUTO_INCREMENT , 
+  `filetype` VARCHAR(10) NOT NULL , 
+  `filelocation` VARCHAR(250) NOT NULL , 
+  `filename` VARCHAR(50) NOT NULL , 
+  `textheader` VARCHAR(50) NOT NULL , 
+  `textcontent` VARCHAR(50) NOT NULL , 
+  `bc` VARCHAR(50) NOT NULL , 
+  `textcolor` VARCHAR(50) NOT NULL , 
+  PRIMARY KEY (`cid`)
+) 
+ENGINE = InnoDB;
+```
 
 
 

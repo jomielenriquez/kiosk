@@ -1,0 +1,222 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    /* margin: 0; */
+    font-family: sans-serif;
+    background: #f5f6f7;
+    /* background-image: url("https://c4.wallpaperflare.com/wallpaper/924/847/681/aero-abstract-background-blue-wallpaper-preview.jpg") !important; */
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center;
+    overflow: hidden;
+}
+
+.header {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0;
+    background-color: #0a0a23;
+    color: #fff;
+    border-bottom: 4px solid #fdb347;
+    width:100%;
+    top:0;
+}
+footer{
+    padding: 10px !important;
+    background-color: #0a0a23 !important;
+    border-top: 4px solid #fdb347 !important;
+    text-align: center;
+    color: #fff;
+    position:fixed;
+    width:100%;
+    bottom: 0;
+}
+.icon{
+    height: 50px;
+}
+
+
+.h1{
+    margin: none;
+    padding:none;
+}
+.left_pane {
+    display:inline-block;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    max-width: 20%;
+    overflow-x: scroll !important;
+    height: 90vh;
+    min-height: 90vh;
+}
+.main_screen{
+    width:78%;
+    display:inline-block;
+    height: 90vh;
+    float: right;
+    margin-right: 1%;
+}
+.hidden{
+    display: none;
+}
+.nullleftpane{
+    height: 90vh;
+    min-width: 100%;
+    margin:0 !important;
+}
+
+.slide_content{
+    padding:10vh 5px;
+    text-align: center;
+}
+.img-content, .video-content{
+    height: 90vh;
+    vertical-align: middle;
+}
+.inside_main{
+    width: 100%;
+    text-align: center;
+}
+
+.left_pane img,.left_pane video, .left_pane div.slide_content {
+    width: 90%;
+    /* height: 300px; */
+    object-fit: cover;
+    border-radius: 10px;
+    margin:5px 4%;
+
+    /* for transistions */
+    -webkit-transition-property: all;
+    -webkit-transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease;
+}
+
+.left_pane img:hover,.left_pane video:hover, .left_pane div:hover.slide_content:hover {
+    border: red solid;
+}
+
+.header img, .header h1{
+    display: inline-block;
+    vertical-align: middle;
+    padding:10px;
+}
+
+.inline{
+    display: inline-block;
+}
+
+.text_content_main{
+    width: 80%;
+    height: 50vh;
+    font-size: xx-large;
+}
+.text_right_pane{
+    width: 19%;
+}
+
+.text_content{
+    padding:10vh 5px;
+    text-align: center;
+    height: 90vh;
+}
+/* RESET */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;  
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
