@@ -84,21 +84,10 @@ Username : admin
 Password : admin
 ```
 
+Authentication Token
 ```
-CREATE TABLE `KIOSKDB`.`tblcontent` ( 
-  `cid` INT NOT NULL AUTO_INCREMENT , 
-  `filetype` VARCHAR(10) NOT NULL , 
-  `filelocation` VARCHAR(250) NOT NULL , 
-  `filename` VARCHAR(50) NOT NULL , 
-  `textheader` VARCHAR(50) NOT NULL , 
-  `textcontent` VARCHAR(50) NOT NULL , 
-  `bc` VARCHAR(50) NOT NULL , 
-  `textcolor` VARCHAR(50) NOT NULL , 
-  PRIMARY KEY (`cid`)
-) 
-ENGINE = InnoDB;
+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
 ```
-
 
 
 
