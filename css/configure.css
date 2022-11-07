@@ -124,6 +124,17 @@ footer{
     text-align: center;
     height: 90vh;
 }
+
+.button_classic{
+    display:inline-block;
+    float:right;
+    background-color:red;
+    color:white;
+    border-radius:5px;
+    padding:5px;
+    margin:5px;
+}
+
 /* RESET */
 
 html, body, div, span, object, iframe,
