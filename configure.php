@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+
+<?php 
+    include("tblcontent.php");
+    include("system.php");
+    //include("api.php");
+?>
+
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -10,31 +18,53 @@
   <body>
     <header class="header">
         <img src="/images/malvar.png" class="icon">
-        <h1>Malvar Senior High School</h1>
+        <h1><?php 
+            echo get_system_data($db, "tblsystemparameter","NAME")[0]['paravalue']
+            ?></h1>
     </header>
     <div class="left_pane">
-        <div class="nullleftpane hidden"> <img src="/images/addslide.png"></div>
-        <img class="gallery-content" src="https://venngage-wordpress.s3.amazonaws.com/uploads/2018/11/Blue-Conservation-Creative-Poster-Example-Template.jpg">
-        <img class="gallery-content" src="https://images.examples.com/wp-content/uploads/2018/10/Vintage-Concert-Poster-Template.jpg">
-        <img class="gallery-content" src="https://i.pinimg.com/236x/8e/db/51/8edb51ee62442a5bcff7e6e35c4b88e2.jpg">
-        <img class="gallery-content" src="https://img.freepik.com/free-vector/music-event-poster-with-photo_52683-42061.jpg?w=2000">
-        <img class="gallery-content" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/birthday-celebration-poster-design-template-c5004390166467beb97bda3cd476bb87_screen.jpg?ts=1633119555">
-        <img class="gallery-content" src="https://cdn.dribbble.com/users/5702172/screenshots/13243989/goodluckexam.png">
-        <img class="gallery-content" src="https://c8.alamy.com/comp/2BG7H7E/attention-please-vector-poster-with-voice-megaphone-speech-announcement-poster-alert-message-from-bullhorn-illustration-2BG7H7E.jpg">
-        <img class="gallery-content" src="https://pub-static.fotor.com/assets/projects/pages/5ba2936e-e825-4333-8bdf-3374328b4047/300w/yellow-news-announcement-1146f834-dcf9-4bb0-adbc-1e78ed1a391e.jpg">
-        <img class="gallery-content" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3UTLW1wXqLazzYWqnV3kWyEMyfnCrEWrwlNZnn4CO4TIUPtXX4YyKU4UKgA3F-5Ejzwo&usqp=CAU">
-        <video class="gallery-content" src="https://media.w3.org/2010/05/sintel/trailer.mp4"></video>
-        <video class="gallery-content" src="https://media.w3.org/2010/05/sintel/trailer.mp4"></video>
-        <div class="gallery-content slide_content" style="background-color: gray; color:white;">
-            <div class="MessageHeader">
-                Header
-            </div>
-            <div class="MessageBody">
-                This is just a sample text for the body. This is just a testing. This is just a sample text for the body. This is just a testing. This is just a sample text for the body. This is just a testing.
-                This is just a sample text for the body. This is just a testing. This is just a sample text for the body. This is just a testing. This is just a sample text for the body. This is just a testing.
-            </div>
-        </div>
-
+        <?php
+            if(is_array($get_tblcontent)){
+                foreach($get_tblcontent as $row){
+                    $type =$row['filetype'];
+                    if($type=='IMG'){
+                        ?>
+                        <img class="gallery-content" src="<?php echo $row['filename']??''?>" id="<?php echo $row['cid']??''?>">
+                        <?php
+                    }
+                    else if($type=='VID'){
+                        ?>
+                        <video class="gallery-content" controls loop src="<?php echo $row['filename']??''?>" id="<?php echo $row['cid']??''?>"></video>
+                        <?php
+                    }
+                    else if($type=='TXT'){
+                        ?>
+                        <div class="gallery-content slide_content" style="background-color: <?php echo $row['bc']??''?>; color:<?php echo $row['textcolor']??''?>;" id="<?php echo $row['cid']??''?>">
+                            <div class="MessageHeader">
+                                <?php echo $row['textheader']??''?>
+                            </div>
+                            <div class="MessageBody">
+                                <?php echo $row['textcontent']??''?>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                }
+            }
+            else{
+            ?>
+                <div class="gallery-content slide_content" style="background-color: gray; color:white;">
+                    <div class="MessageHeader">
+                        Empty
+                    </div>
+                    <div class="MessageBody">
+                        
+                    </div>
+                </div>
+            <?php
+            }
+        ?>
+        <img class="gallery-content" src="/images/addslide.png" title="Add new announcement">
     </div>
     <div class="main_screen">
         <div class="inside_main">
@@ -55,6 +85,7 @@
                     
                 </div>
             </div>
+            <div class="button_classic">Delete</div>
         </div>
     </div>
     <footer>
