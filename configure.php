@@ -67,6 +67,7 @@
         <img class="gallery-content" src="/images/addslide.png" title="Add new announcement">
     </div>
     <div class="main_screen">
+        <!--
         <div class="inside_main">
             <img class="img-content hidden" id="img_main" src="">
             <video class="video-content hidden" id="video_main" controls loop autoplay src=""></video>
@@ -85,8 +86,26 @@
                     
                 </div>
             </div>
-            <div class="button_classic">Delete</div>
+            
         </div>
+        <div class="button_classic">Delete</div>
+        -->
+        <!--working upload-->
+        <!--
+        <form name="form" method="post" action="upload.php" enctype="multipart/form-data" >
+        <input type="file" name="my_file" /><br /><br />
+        <input type="submit" name="submit" value="Upload"/>
+        </form>
+        -->
+        <div class="div_form">
+            
+            <input id="sortpicture" type="file" name="sortpic" />
+            
+            <button id="upload">Upload</button>
+            
+            
+        </div>
+        
     </div>
     <footer>
         @ 2022 - Digital Bulletin Board
@@ -95,27 +114,45 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('div.left_pane img,div.left_pane video,div.left_pane div.slide_content').click(function(){
-                if($(this).is('img')){
-                    $("#img_main").attr("src",$(this).attr("src"));
+                //if($(this).is('img')){
+                //    $("#img_main").attr("src",$(this).attr("src"));
 
-                    $("div.inside_main img").removeClass("hidden");
-                    $("div.inside_main video").addClass("hidden");
-                    $("div.inside_main div").addClass("hidden");
-                }
-                if($(this).is('video')){
-                    $("#video_main").attr("src",$(this).attr("src"));
+                //    $("div.inside_main img").removeClass("hidden");
+                //    $("div.inside_main video").addClass("hidden");
+                //    $("div.inside_main div").addClass("hidden");
+                //}
+                //if($(this).is('video')){
+                //    $("#video_main").attr("src",$(this).attr("src"));
 
-                    $("div.inside_main img").addClass("hidden");
-                    $("div.inside_main video").removeClass("hidden");
-                    $("div.inside_main div").addClass("hidden");
-                }
-                if($(this).is('div')){
-                    $("div.inside_main img").addClass("hidden");
-                    $("div.inside_main video").addClass("hidden");
-                    $("div.inside_main div").removeClass("hidden");
-                }
+                //    $("div.inside_main img").addClass("hidden");
+                //    $("div.inside_main video").removeClass("hidden");
+                //    $("div.inside_main div").addClass("hidden");
+                //}
+                //if($(this).is('div')){
+                //    $("div.inside_main img").addClass("hidden");
+                //    $("div.inside_main video").addClass("hidden");
+                //    $("div.inside_main div").removeClass("hidden");
+                //}
             })
         })
+        $('#upload').on('click', function() {
+            var file_data = $('#sortpicture').prop('files')[0];   
+            var form_data = new FormData();                  
+            form_data.append('file', file_data);                     
+            
+            $.ajax({
+                url: 'upload.php', // <-- point to server-side PHP script 
+                dataType: 'text',  // <-- what to expect back from the PHP script, if anything
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,                         
+                type: 'post',
+                success: function(php_script_response){
+                    console.log(php_script_response); // <-- display response from the PHP script, if any
+                }
+             });
+        });
     </script>
   </body>
 </html>

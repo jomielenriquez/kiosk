@@ -56,7 +56,7 @@ footer{
 }
 .main_screen{
     width:78%;
-    display:inline-block;
+    /*display:inline-block;*/
     height: 90vh;
     float: right;
     margin-right: 1%;
@@ -79,11 +79,12 @@ footer{
     vertical-align: middle;
 }
 .inside_main{
-    width: 100%;
+    width: 90%;
     text-align: center;
+    display:inline-block;
 }
 
-.left_pane img,.left_pane video, .left_pane div.slide_content {
+.left_pane img, .left_pane video, .left_pane div.slide_content {
     width: 90%;
     /* height: 300px; */
     object-fit: cover;
@@ -120,9 +121,11 @@ footer{
 }
 
 .text_content{
+    width:80%;
     padding:10vh 5px;
     text-align: center;
     height: 90vh;
+    display: inline-block;
 }
 
 .button_classic{
@@ -132,8 +135,16 @@ footer{
     color:white;
     border-radius:5px;
     padding:5px;
-    margin:5px;
+    margin-top:5px !important;
+    top:0;
 }
+
+.div_form{
+    margin:10px;
+    text-align:center;
+    vertical-align: middle;
+}
+
 
 /* RESET */
 
