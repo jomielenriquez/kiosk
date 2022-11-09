@@ -116,7 +116,7 @@ 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
 ||PARAVALUE|VARCHAR(200)||
 
 
-Inserting to tblcontent 
+### Inserting to tblcontent 
 ```
 INSERT INTO `tblcontent`(`filetype`, `filelocation`, `filename`, `textheader`, `textcontent`, `bc`, `textcolor`, `order`) 
 VALUES (
