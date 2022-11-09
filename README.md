@@ -89,6 +89,29 @@ Authentication Token
 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
 ```
 
+
+###  Table 
+:construction: TBLCONTENT
+>TBLCONTENT will be the table where the announcements will be stored
+||Table Name|Type|Comment|
+|:--:|:--:|:--:|:--:|
+|:key:|CID|INT(11)||
+||FILETYPE|VARCHAR(10)|IMG - image, VID - video, TXT - text|
+||FILELOCATION|VARCHAR(250)|location of the file|
+||TEXTHEADER|VARCHAR(50)|Announcement header if text|
+||TEXTCONTENT|VARCHAR(50)|Announcement content if text|
+||BC|VARCHAR(50)|Background color of text|
+||ORDER|INT(11)|Ordering of the announcements|
+
+:construction: TBLSYSTEMPARAMETER
+>TBLSYSTEMPARAMETER is the table where the system configurations will be stored i.e. header name
+||Table Name|Type|Comment|
+|:--:|:--:|:--:|:--:|
+|:key:|PARAID|INT(11)||
+||PARAMETER|VARCHAR(50)||
+||PARAVALUE|VARCHAR(200)||
+
+
 Inserting to tblcontent 
 ```
 INSERT INTO `tblcontent`(`filetype`, `filelocation`, `filename`, `textheader`, `textcontent`, `bc`, `textcolor`, `order`) 
