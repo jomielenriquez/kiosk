@@ -92,7 +92,7 @@ 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
 
 ###  Table 
 :construction: TBLCONTENT
-TBLCONTENT will be the table where the announcements will be stored
+>TBLCONTENT will be the table where the announcements will be stored
 
 
 ||Table Name|Type|Comment|
@@ -106,7 +106,7 @@ TBLCONTENT will be the table where the announcements will be stored
 ||ORDER|INT(11)|Ordering of the announcements|
 
 :construction: TBLSYSTEMPARAMETER
-TBLSYSTEMPARAMETER is the table where the system configurations will be stored i.e. header name
+>TBLSYSTEMPARAMETER is the table where the system configurations will be stored i.e. header name
 
 
 ||Table Name|Type|Comment|
