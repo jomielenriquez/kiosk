@@ -2,7 +2,7 @@
 >Bulletin System
 
 ### :hammer_and_wrench: OS Installation
-1. Install the latest ubuntu 20.04 LTS to an SD card using raspberry pi imager and connect the SD card to the raspberry pi
+1. Install the latest ubuntu 20.04 LTS to a SD card using raspberry pi imager and connect the SD card to the raspberry pi
     <div>
       <img src='https://user-images.githubusercontent.com/77730490/195964670-a37b4e39-271e-4608-b31d-fdfc40e02273.png'/>
     </div>
@@ -29,7 +29,6 @@ sudo apt install php-mysql
 ```
 9. Installing apache,php, msql https://randomnerdtutorials.com/raspberry-pi-apache-mysql-php-lamp-server/
 10. Modify nginx setting https://pimylifeup.com/raspberry-pi-nginx/
-
 
 ### :hammer_and_wrench: Mariabd commands
 - Creating new database.
@@ -139,6 +138,30 @@ VALUES (
     3
 	)
 ```
+## Updating ng Client Max body size
+> Initially, raspi is configured to accept smaller size of body. This will affect the uploading of data. Meaning the client will not be able to upload large files like video and images. See the following command below to modify the body size to enable large file uploads.
+
+
+Open your raspberry pi terminal and execute the command below.
+```
+sudo nano /etc/nginx/nginx.conf
+```
+
+
+Add the following line to http or server or location context to increase the size limit in nginx.conf,
+```
+client_max_body_size 200M;
+```
+
+Execute the command below to reload nginx and the changes will be applied
+```
+sudo systemctl reload nginx.service
+```
+
+The client_max_body_size directive assigns the maximum accepted body size of client request, indicated by the line Content-Length in the header of request. If size is greater the given one, then the client gets the error “Request Entity Too Large” (413).
+
+
+>SOURCE: [https://www.cyberciti.biz/faq/linux-unix-bsd-nginx-413-request-entity-too-large/](https://www.cyberciti.biz/faq/linux-unix-bsd-nginx-413-request-entity-too-large/)
 
 
 

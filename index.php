@@ -66,7 +66,7 @@
         
     </div>
     <footer>
-        @ 2022 - Digital Bulletin Board
+        @<?php echo gethostbyname(trim(`hostname`));?> 2022 - Digital Bulletin Board
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="js/system.js"></script>

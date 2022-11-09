@@ -80,9 +80,9 @@ footer{
 }
 
 .gallery img,.gallery video, .gallery div.slide_content {
-    width: 20%;
-    max-width: 350px;
-    height: 300px;
+    width: 30%;
+    max-width: 500px;
+    height: 500px;
     object-fit: cover;
     border-radius: 10px;
 

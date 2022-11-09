@@ -34,7 +34,7 @@
         move_uploaded_file($_FILES['file']['tmp_name'], '/var/www/html/img/' . $_FILES['file']['name']);
         
         //echo $_FILES['file']['name'];
-        echo "/".$filename.".".$ext;
+        echo $filename.".".$ext;
     }
 
 ?>
