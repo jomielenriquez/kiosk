@@ -21,6 +21,10 @@
 		//$result = $db->query($query);
 
 		if($db->query($query)==TRUE){
+			//update tblsystemparameter set paravalue='1' where parameter='UPD'
+			
+			$db->query("update tblsystemparameter set paravalue='1' where parameter='UPD'");
+			
 			echo "SUCCESS";
 		}
 		else{
