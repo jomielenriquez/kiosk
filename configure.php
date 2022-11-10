@@ -17,10 +17,8 @@
   </head>
   <body>
     <header class="header">
-        <img src="/images/malvar.png" class="icon">
-        <h1><?php 
-            echo get_system_data($db, "tblsystemparameter","NAME")[0]['paravalue']
-            ?></h1>
+        <img id="pageheaderlogo" src="<?php echo get_system_data($db, "tblsystemparameter","LOGO")[0]['paravalue']?>" class="icon">
+        <h1 id="pageheadername"><?php echo get_system_data($db, "tblsystemparameter","NAME")[0]['paravalue']?></h1>
     </header>
     <div class="left_pane">
         <?php
@@ -67,45 +65,57 @@
         <img class="gallery-content NEW" src="/images/addslide.png" title="Add new announcement">
     </div>
     <div class="main_screen">
-        <!--
-        <div class="inside_main">
-            <img class="img-content hidden" id="img_main" src="">
-            <video class="video-content hidden" id="video_main" controls loop autoplay src=""></video>
-            <div class="gallery-content text_content" style="background-color: gray; color:white;">
-                <div class="inline text_content_main">
-                    <div class="MessageHeader">
-                        Header
-                    </div>
-                    <div class="MessageBody">
-                        This is just a sample text for the body. This is just a testing. This is just a sample text for the body. This is just a testing. This is just a sample text for the body. This is just a testing.
-                        This is just a sample text for the body. This is just a testing. This is just a sample text for the body. This is just a testing. This is just a sample text for the body. This is just a testing.
-                    </div>
-
-                </div>
-                <div class="inline text_right_pane">
-                    
-                </div>
-            </div>
-            
-        </div>
-        <div class="button_classic">Delete</div>
-        -->
-        <!--working upload-->
-        <!--
-        <form name="form" method="post" action="upload.php" enctype="multipart/form-data" >
-        <input type="file" name="my_file" /><br /><br />
-        <input type="submit" name="submit" value="Upload"/>
-        </form>
-        -->
-        
-        
         <div class="div_form">
             <div class="alert">
                 <h2>Configurations</h2>
+                <input type="button" style="" class="btn_green" value="settings"/>
             
                 <p class="paragraph"> Please select the type of announcement  if image, video or text</p>
             
             </div>
+            
+            <button type="button" class="collapsible">General Settings (Click here..)</button>
+            <div class="content">
+              <!--<p>Lorem ipsum...</p>-->
+              Header Name
+              <input type="text" id="inputnewname" placeholder="" value="<?php echo get_system_data($db, "tblsystemparameter","NAME")[0]['paravalue']?>"/>
+              Header Logo
+              <input type="file" id="newLogo" class="hidden"/>
+              <input type="button" class="btn_green" id="btn_newLogo" value="Upload new"/>
+              <br/>
+              <img id="gs_previewLogo" src="<?php echo get_system_data($db, "tblsystemparameter","LOGO")[0]['paravalue']?>" style="height:200px;"/>
+              <br/>
+              TYPE
+              <select name="TYPE" id="TYPE">
+                  <option value="SLIDE">Slide Show</option>
+                  <option value="GRID">Grid</option>
+                </select>
+                <div class="duration hidden">
+              DURATION (sec)
+              <input id="inputduration" type="number" value="<?php echo get_system_data($db, "tblsystemparameter","DUR")[0]['paravalue']/1000?>"/>  
+                </div>
+              
+                
+                
+                <br/>
+              <input type="button" class="btn_green" id="btn_saveGS" value="Save General Settings"/>
+            </div>
+            <script>
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
+
+                for (i = 0; i < coll.length; i++) {
+                  coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                      content.style.display = "none";
+                    } else {
+                      content.style.display = "block";
+                    }
+                  });
+                }
+            </script>
             
             <div class="radiosdivclass">
                 <label class="form-control">
@@ -160,18 +170,85 @@
             
             <div class="buttons hidden">
                 <input id="inputsave" type="button" class="btn_green" value="Save" onclick="insertTblContent()">
-                <input id="inputcancel" type="button" class="btn_red hidden" value="Delete">
+                <input id="inputcancel" type="button" class="btn_red hidden" value="Delete" onclick="deleteTblContent()">
             </div>
             
         </div>
         
     </div>
     <footer>
-        @ 2022 - Digital Bulletin Board
+        @<?php echo date("Y"); ?> - Digital Bulletin Board
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script type="text/javascript">
-        //background-color: #000000; color:#ffffff;
+        $("#btn_newLogo").click(function(){
+            $("#newLogo").click();
+        })
+        $("#newLogo").change(function(){
+            const image_ext = ["IMG","PNG","JPG","JPEG", "SVG"];
+            const video_ext = ["MP4","MOV","WMV","AVI","MKV"];
+            
+            var file_data = $('#newLogo').prop('files')[0];   
+            var form_data = new FormData();                  
+            form_data.append('file', file_data);                     
+            
+            const ext = file_data.name.split(".");
+            
+            if(!image_ext.includes(ext[1].toUpperCase())){
+                alert("please select image file.");
+                $("#newLogo").val(null);
+                return;
+            }
+            $.ajax({
+                url: 'upload.php', // <-- point to server-side PHP script 
+                dataType: 'text',  // <-- what to expect back from the PHP script, if anything
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,                         
+                type: 'post',
+                success: function(response_filename){
+                    response_filename = "/img/"+response_filename;
+                    $("#gs_previewLogo").attr("src",response_filename);
+                }
+             });
+        })
+        
+        // clicking this button will save the changes in the general settings
+        $("#btn_saveGS").click(function(){
+            var defaultlogo = $("#pageheaderlogo").attr("src");
+            var defaultname = $("#pageheadername").html();
+            
+            var newlogo = $("#gs_previewLogo").attr("src");
+            var newname = $("#inputnewname").val();
+            
+            //if(newlogo==defaultlogo && newname==defaultname){
+            //    alert("There is no changes with the header..");
+            //    return;
+            //}
+            
+            var TYPE = $("#TYPE").val();
+            var duration = parseFloat($("#inputduration").val()) * 1000;
+            
+            $.ajax({
+                url: 'UpdateHeader.php', // <-- point to server-side PHP script 
+                dataType: 'text',  // <-- what to expect back from the PHP script, if anything
+                data: { headername: newname, 
+                        headerlogo: newlogo,
+                        TYPE:TYPE,
+                        duration:duration
+                        
+                    },                         
+                type: 'GET',
+                success: function(message){
+                    alert(message);
+                    reset_main();
+                    location.reload();
+                }
+             });
+        });
+        
+        
         $(".configuration_sampple_text").css("background-color","#000000");
         $(".configuration_sampple_text").css("color","#ffffff");
         function reset_main(){
@@ -227,7 +304,7 @@
                         $(".preview-img").removeClass("hidden");
                         $(".preview-img img").attr("src",$(this).attr("src"));
                         
-                        $(".preview-img img").attr("id",$(this).attr("id"));
+                        $("div.div_form").attr("id",$(this).attr("id"));
                         
                         $(".buttons").removeClass("hidden");
                         $("#inputsave").addClass("hidden");
@@ -238,7 +315,7 @@
                         $(".preview-vid").removeClass("hidden");
                         $(".preview-vid video").attr("src",$(this).attr("src"));
                         
-                        $(".preview-vid video").attr("id",$(this).attr("id"));
+                        $("div.div_form").attr("id",$(this).attr("id"));
                         
                         $(".buttons").removeClass("hidden");
                         $("#inputsave").addClass("hidden");
@@ -259,10 +336,18 @@
                         $("div.configuration_sampple_text div.MessageBody").html($(this).find("div.MessageBody").html());
                         $("div.configuration_sampple_text").css("background-color",$(this).css("background-color"));
                         $("div.configuration_sampple_text").css("color",$(this).css("color"));
+                        $("div.div_form").prop("id",$(this).prop("id"));
                     };
                     
                 }
             })
+            $("#TYPE").val('<?php echo get_system_data($db, "tblsystemparameter","TYP")[0]["paravalue"]?>');
+            if($("#TYPE").val()=="SLIDE") $(".duration").removeClass("hidden");
+        })
+        
+        $("#TYPE").change(function(){
+            if($("#TYPE").val()=="SLIDE") $(".duration").removeClass("hidden");
+            else $(".duration").addClass("hidden");
         })
         
         //$('#inputFile').on('click', function() {
@@ -370,6 +455,20 @@
                         textcolor: $("#input_tc").val(),
                         order: "0"
                     },                         
+                type: 'GET',
+                success: function(message){
+                    alert(message);
+                    reset_main();
+                    location.reload();
+                }
+             });
+        }
+        
+        function deleteTblContent(){
+            $.ajax({
+                url: 'deleteTblContent.php', // <-- point to server-side PHP script 
+                dataType: 'text',  // <-- what to expect back from the PHP script, if anything
+                data: { cid: $("div.div_form").prop("id")},                         
                 type: 'GET',
                 success: function(message){
                     alert(message);
