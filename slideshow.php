@@ -142,7 +142,7 @@ img.source, video.source{
                         <!--<video class="gallery-content" controls loop src="<?php echo $row['filename']??''?>"></video>-->
                         <div class="mySlides fade">
 						  <div class="numbertext"><?php echo $count ?> / <?php echo count($get_tblcontent) ?></div>
-						  <video controls autoplay src="<?php echo $row['filename']??''?>" class="source"></video>
+						  <video loop controls autoplay="autoplay" muted src="<?php echo $row['filename']??''?>" class="source"></video>
 						  <!--<div class="text">Caption Text</div>-->
 						</div>
                         
@@ -208,6 +208,8 @@ echo $my_current_ip;?>/configure.php</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script>
+  
+  
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -256,7 +258,7 @@ async function showSlidesauto() {
   let dots = document.getElementsByClassName("dot");
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";  
-    try{await slides[i].getElementsByTagName("video").get(0).pause();}catch{}
+    //try{await slides[i].getElementsByTagName("video").get(0).pause();}catch{}
   }
   slideIndex++;
   if (slideIndex > slides.length) {slideIndex = 1}    
@@ -270,10 +272,11 @@ async function showSlidesauto() {
   try{
 	console.log(slides[slideIndex-1].getElementsByTagName("video")[0].duration);
 	duration = slides[slideIndex-1].getElementsByTagName("video")[0].duration;
+	//slides[slideIndex-1].getElementsByTagName("video")[0].play();
   }catch{}
   if(duration==0) setTimeout(showSlidesauto, <?php echo get_system_data($db, "tblsystemparameter","DUR")[0]['paravalue']?>);
   else {
-	  try{await slides[slideIndex-1].getElementsByTagName("video")[0].get(0).play();}catch{}
+	  //try{await slides[slideIndex-1].getElementsByTagName("video")[0].get(0).play();}catch{}
 	  setTimeout(showSlidesauto, parseFloat(duration)*1000);
 	  }
 }
@@ -294,6 +297,13 @@ async function showSlidesauto() {
                 }
             });
         }, 5000);
+	
+	
+	
+	$(document).click(function(){
+    var elem = document.documentElement; if (elem.requestFullscreen) { elem.requestFullscreen() }
+  })
+       
 </script>
 
 </body>

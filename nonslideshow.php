@@ -71,6 +71,9 @@ echo $my_current_ip;?>/configure.php
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="js/system.js"></script>
     <script>
+        	$(document).click(function(){
+                var elem = document.documentElement; if (elem.requestFullscreen) { elem.requestFullscreen() }
+              })
         //console.log("test");
         //const socket = new WebSocket('ws://localhost:5678');
 
@@ -100,6 +103,7 @@ echo $my_current_ip;?>/configure.php
                 }
             });
         }, 5000);
+        
     </script>
   </body>
 </html>
